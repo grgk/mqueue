@@ -3,7 +3,9 @@
     "description": "Message queue",
     "type": "library",
     "require": {
-        "php-amqplib/php-amqplib": "^2.6"
+        "php-amqplib/php-amqplib": "^2.6",
+        "symfony/filesystem": "^3.2",
+        "symfony/finder": "^3.2"
     },
     "require-dev": {
         "phpunit/phpunit": "^5.7"

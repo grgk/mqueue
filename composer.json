@@ -1,0 +1,17 @@
+{
+    "name": "grgk/mqueue",
+    "description": "Message queue",
+    "type": "library",
+    "require": {
+        "php-amqplib/php-amqplib": "^2.6"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^5.7"
+    },
+    "authors": [
+        {
+            "name": "grgk",
+            "email": "gfx@karpiak.pl"
+        }
+    ]
+}

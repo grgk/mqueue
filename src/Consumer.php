@@ -2,6 +2,7 @@
 
 namespace Mqueue;
 
+use Mqueue\Driver\DriverInterface;
 use Mqueue\Worker\WorkerInterface;
 
 /**
@@ -15,26 +16,26 @@ class Consumer
 {
     /**
      * Queue driver
-     * @var Driver
+     * @var DriverInterface
      */
     public $driver;
 
     /**
      * Consumer constructor.
-     * @param Driver $driver
+     * @param DriverInterface $driver
      */
-    public function __construct(Driver $driver)
+    public function __construct(DriverInterface $driver)
     {
         $this->driver = $driver;
     }
 
     /**
      * Start listening for messages - worker loop
-     * @param string $queueName
      * @param WorkerInterface $worker Worker object implementing work() method for processing messages
+     * @param string $queueName
      */
     public function consume(WorkerInterface $worker, $queueName = 'default')
     {
-        $this->driver->consume($queueName, $worker);
+        return $this->driver->consume($queueName, $worker);
     }
 }

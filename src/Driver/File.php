@@ -2,25 +2,31 @@
 
 namespace Mqueue\Driver;
 
-use Mqueue\Driver;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Finder\Finder;
 
-class File implements Driver
+class File implements DriverInterface
 {
     private $path;
 
-    private $fs;
+    private $fileSystem;
+
+    /**
+     * Consume in endless loop or consume single message
+     *
+     * @var bool
+     */
+    public $loop = true;
 
     public function __construct($path = null)
     {
-        $this->fs = new Filesystem();
+        $this->fileSystem = new Filesystem();
         if (empty($path)) {
             $path = sys_get_temp_dir() . DIRECTORY_SEPARATOR . 'mqueue';
         }
         $this->path = $path;
-        if (!$this->fs->exists($this->path)) {
-            $this->fs->mkdir($path);
+        if (!$this->fileSystem->exists($this->path)) {
+            $this->fileSystem->mkdir($path);
         }
     }
 
@@ -28,32 +34,58 @@ class File implements Driver
      * Push message to the queue
      * @param string $queueName
      * @param string $message
+     * @return bool
      */
     public function pushMessage($queueName, $message)
     {
-        if (!$this->fs->exists($this->path . DIRECTORY_SEPARATOR . $queueName)) {
-            $this->fs->mkdir($this->path . DIRECTORY_SEPARATOR . $queueName);
+        $queuePath = $this->path . DIRECTORY_SEPARATOR . $queueName;
+        if (!$this->fileSystem->exists($queuePath)) {
+            $this->fileSystem->mkdir($queuePath);
         }
-        $filename = uniqid(rand(), true) . '.msg';
-        $this->fs->dumpFile($filename, $message);
+        $filename = $queuePath . DIRECTORY_SEPARATOR . uniqid(rand(), true) . '.msg';
+        $this->fileSystem->dumpFile($filename, $message);
+        return true;
     }
 
     /**
+     * Consume queue
      * @param string $queueName
      * @param object $worker Worker object (must implement work() method)
      */
     public function consume($queueName, $worker)
     {
-        $finder = new Finder();
-        while (true) {
-            $finder->files()->in($this->path . DIRECTORY_SEPARATOR . $queueName);
-            foreach ($finder as $file) {
+        do {
+            $files = $this->getFiles($queueName);
+            foreach ($files as $file) {
                 $message = $file->getContents();
                 if ($worker->work($message)) {
-                    $this->fs->remove($file);
+                    $this->fileSystem->remove($file);
                 }
             }
-            sleep(3);
-        }
+            unset($files);
+            sleep(1);
+        } while ($this->loop());
+    }
+
+    /**
+     * Consume in endless loop or consume single message
+     *
+     * @return bool
+     */
+    public function loop()
+    {
+        return $this->loop;
+    }
+
+    /**
+     * Read files from queue
+     * @param $queueName
+     * @return Finder
+     */
+    public function getFiles($queueName)
+    {
+        $finder = new Finder();
+        $finder->files()->name('*.msg')->in($this->path . DIRECTORY_SEPARATOR . $queueName);
+        return $finder;
     }
 }

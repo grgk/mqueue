@@ -2,6 +2,8 @@
 
 namespace Mqueue\Worker;
 
+use Mqueue\Exception\InvalidMessageException;
+
 class BaseWorker implements WorkerInterface
 {
     /**
@@ -11,8 +13,7 @@ class BaseWorker implements WorkerInterface
     {
         $decoded = json_decode($message, true);
         if ($decoded === null || empty($decoded['worker'])) {
-            // Unknown message type
-            return true;
+            throw new InvalidMessageException('Message can not be decoded');
         }
         $worker = $this->getWorker($decoded['worker']);
         return $worker->work($decoded['data']);
@@ -26,7 +27,7 @@ class BaseWorker implements WorkerInterface
      */
     private function getWorker($className)
     {
-        $class = 'Queue\Worker\\' . $className . 'Worker';
+        $class = $className;
         return new $class();
     }
 }

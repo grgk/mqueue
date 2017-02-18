@@ -1,8 +1,10 @@
 <?php
 
-namespace Mqueue\Worker;
+namespace Mqueue\Tests\Helpers;
 
-class ExampleWorker implements WorkerInterface
+use Mqueue\Worker\WorkerInterface;
+
+class WorkerMock implements WorkerInterface
 {
     public $message;
 
@@ -12,7 +14,6 @@ class ExampleWorker implements WorkerInterface
     public function work($message)
     {
         $this->message = $message;
-        echo $message;
-        return true;
+        return $this;
     }
 }

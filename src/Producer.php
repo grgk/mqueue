@@ -2,6 +2,8 @@
 
 namespace Mqueue;
 
+use Mqueue\Driver\DriverInterface;
+
 /**
  * Usage:
  * $publisher = new Producer();
@@ -19,9 +21,9 @@ class Producer
 
     /**
      * Producer constructor.
-     * @param Driver $driver
+     * @param DriverInterface $driver
      */
-    public function __construct(Driver $driver)
+    public function __construct(DriverInterface $driver)
     {
         $this->driver = $driver;
     }
@@ -33,6 +35,6 @@ class Producer
      */
     public function produce($message, $queueName = 'default')
     {
-        $this->driver->pushMessage($queueName, $message);
+        return $this->driver->pushMessage($queueName, $message);
     }
 }

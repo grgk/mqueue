@@ -2,16 +2,22 @@
 
 namespace Mqueue\Driver;
 
-use Mqueue\Driver;
 use PhpAmqpLib\Connection\AMQPStreamConnection;
 use PhpAmqpLib\Message\AMQPMessage;
 
-class RabbitMq implements Driver
+class RabbitMq implements DriverInterface
 {
     /**
      * @var AMQPStreamConnection
      */
     private $connection;
+
+    /**
+     * Consume in loop or consume single message
+     *
+     * @var bool
+     */
+    public $loop = true;
 
     public function __construct($connection)
     {
@@ -46,8 +52,18 @@ class RabbitMq implements Driver
             }
         };
         $channel->basic_consume($queueName, '', false, false, false, false, $callback);
-        while (count($channel->callbacks)) {
+        do {
             $channel->wait();
-        }
+        } while ($this->loop() && count($channel->callbacks));
+    }
+
+    /**
+     * Consume in loop or consume single message
+     *
+     * @return bool
+     */
+    public function loop()
+    {
+        return $this->loop;
     }
 }

@@ -7,9 +7,9 @@
   </testsuites>
   <logging>
     <log type="coverage-clover"
-         target="build/phpunit.coverage.xml"/>
+         target="./build/phpunit.coverage.xml"/>
     <log type="junit"
-         target="build/tests-junit.xml"
+         target="./build/tests-junit.xml"
          logIncompleteSkipped="false"/>
   </logging>
   <filter>

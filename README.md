@@ -7,6 +7,8 @@
 [![SonarQube Coverage](https://sonarqube.com/api/badges/measure?key=grgk.mqueue&metric=coverage)](https://sonarqube.com/dashboard/index?id=grgk.mqueue)
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg)](http://opensource.org/licenses/MIT)
 [![GitHub issues](https://img.shields.io/github/issues/grgk/mqueue.svg)](https://github.com/grgk/mqueue/issues?q=is%3Aopen)
+[![StyleCI](https://styleci.io/repos/78752806/shield?branch=master)](https://styleci.io/repos/78752806)
+[![Code Climate](https://codeclimate.com/github/grgk/mqueue/badges/gpa.svg)](https://codeclimate.com/github/grgk/mqueue)
 
 ## About
 Mqueue is a message queue wrapper written in PHP.

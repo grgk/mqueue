@@ -5,16 +5,9 @@
       <directory>tests</directory>
     </testsuite>
   </testsuites>
-  <logging>
-    <log type="coverage-clover"
-         target="build/phpunit.coverage.xml"/>
-    <log type="junit"
-         target="build/tests-junit.xml"
-         logIncompleteSkipped="false"/>
-  </logging>
   <filter>
     <whitelist>
-      <directory suffix=".php">src</directory>
+      <directory suffix=".php">src/</directory>
     </whitelist>
   </filter>
 </phpunit>

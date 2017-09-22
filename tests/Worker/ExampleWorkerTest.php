@@ -1,5 +1,5 @@
 <?php
-namespace Mqueue\Tests\Worker;
+namespace Tests\Worker;
 
 use Mqueue\Worker\ExampleWorker;
 use PHPUnit\Framework\TestCase;

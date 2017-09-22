@@ -1,7 +1,7 @@
 <?php
-namespace Mqueue\Tests;
+namespace Tests;
 
-use Mqueue\Tests\Helpers\DriverMock;
+use Tests\Helpers\DriverMock;
 use Mqueue\Producer;
 use PHPUnit\Framework\TestCase;
 

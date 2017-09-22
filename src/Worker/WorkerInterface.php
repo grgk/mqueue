@@ -5,7 +5,8 @@ namespace Mqueue\Worker;
 interface WorkerInterface
 {
     /**
-     * Process message
+     * Process message.
+     *
      * @param $message
      * @return bool Return true on success, otherwise message will be requeued
      */

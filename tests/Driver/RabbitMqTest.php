@@ -1,9 +1,9 @@
 <?php
-namespace Mqueue\Tests\Driver;
+namespace Tests\Driver;
 
 use Mqueue\Driver\DriverInterface;
 use Mqueue\Driver\RabbitMq;
-use Mqueue\Tests\Helpers\WorkerMock;
+use Tests\Helpers\WorkerMock;
 use PhpAmqpLib\Channel\AMQPChannel;
 use PhpAmqpLib\Connection\AMQPStreamConnection;
 use PhpAmqpLib\Message\AMQPMessage;

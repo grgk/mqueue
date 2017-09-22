@@ -15,13 +15,15 @@ use Mqueue\Worker\WorkerInterface;
 class Consumer
 {
     /**
-     * Queue driver
+     * Queue driver.
+     *
      * @var DriverInterface
      */
     public $driver;
 
     /**
      * Consumer constructor.
+     *
      * @param DriverInterface $driver
      */
     public function __construct(DriverInterface $driver)
@@ -30,7 +32,8 @@ class Consumer
     }
 
     /**
-     * Start listening for messages - worker loop
+     * Start listening for messages - worker loop.
+     *
      * @param WorkerInterface $worker Worker object implementing work() method for processing messages
      * @param string $queueName
      */

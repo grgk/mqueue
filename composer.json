@@ -16,9 +16,9 @@
         }
     },
     "autoload-dev": {
-        "classmap": [
-            "tests/Helpers"
-        ]
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
     },
     "authors": [
         {

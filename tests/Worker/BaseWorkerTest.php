@@ -1,7 +1,7 @@
 <?php
-namespace Mqueue\Tests\Worker;
+namespace Tests\Worker;
 
-use Mqueue\Tests\Helpers\WorkerMock;
+use Tests\Helpers\WorkerMock;
 use Mqueue\Worker\BaseWorker;
 use PHPUnit\Framework\TestCase;
 

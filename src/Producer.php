@@ -14,13 +14,15 @@ use Mqueue\Driver\DriverInterface;
 class Producer
 {
     /**
-     * Queue driver
+     * Queue driver.
+     *
      * @var Driver
      */
     public $driver;
 
     /**
      * Producer constructor.
+     *
      * @param DriverInterface $driver
      */
     public function __construct(DriverInterface $driver)
@@ -29,7 +31,8 @@ class Producer
     }
 
     /**
-     * Produce new message and push to the queue
+     * Produce new message and push to the queue.
+     *
      * @param string $queueName
      * @param string $message
      */

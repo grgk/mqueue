@@ -12,7 +12,7 @@ class File implements DriverInterface
     private $fileSystem;
 
     /**
-     * Consume in endless loop or consume single message
+     * Consume in endless loop or consume single message.
      *
      * @var bool
      */
@@ -31,7 +31,8 @@ class File implements DriverInterface
     }
 
     /**
-     * Push message to the queue
+     * Push message to the queue.
+     *
      * @param string $queueName
      * @param string $message
      * @return bool
@@ -48,7 +49,8 @@ class File implements DriverInterface
     }
 
     /**
-     * Consume queue
+     * Consume queue.
+     *
      * @param string $queueName
      * @param object $worker Worker object (must implement work() method)
      */
@@ -68,7 +70,7 @@ class File implements DriverInterface
     }
 
     /**
-     * Consume in endless loop or consume single message
+     * Consume in endless loop or consume single message.
      *
      * @return bool
      */
@@ -78,7 +80,8 @@ class File implements DriverInterface
     }
 
     /**
-     * Read files from queue
+     * Read files from queue.
+     *
      * @param $queueName
      * @return Finder
      */

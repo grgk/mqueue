@@ -1,8 +1,8 @@
 <?php
-namespace Mqueue\Tests\Driver;
+namespace Tests\Driver;
 
 use Mqueue\Driver\File;
-use Mqueue\Tests\Helpers\WorkerMock;
+use Tests\Helpers\WorkerMock;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Finder\Finder;

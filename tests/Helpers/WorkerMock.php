@@ -1,6 +1,6 @@
 <?php
 
-namespace Mqueue\Tests\Helpers;
+namespace Tests\Helpers;
 
 use Mqueue\Worker\WorkerInterface;
 

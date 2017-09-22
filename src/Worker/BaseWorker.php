@@ -20,7 +20,8 @@ class BaseWorker implements WorkerInterface
     }
 
     /**
-     * Factory
+     * Factory.
+     *
      * @param $className
      * @return mixed
      *

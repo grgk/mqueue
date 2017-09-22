@@ -13,7 +13,7 @@ class RabbitMq implements DriverInterface
     private $connection;
 
     /**
-     * Consume in loop or consume single message
+     * Consume in loop or consume single message.
      *
      * @var bool
      */
@@ -25,7 +25,8 @@ class RabbitMq implements DriverInterface
     }
 
     /**
-     * Push message to the queue
+     * Push message to the queue.
+     *
      * @param string $queueName
      * @param string $message
      */
@@ -39,6 +40,8 @@ class RabbitMq implements DriverInterface
     }
 
     /**
+     * Consume queue.
+     *
      * @param string $queueName
      * @param object $worker Worker object (must implement work() method)
      */
@@ -58,7 +61,7 @@ class RabbitMq implements DriverInterface
     }
 
     /**
-     * Consume in loop or consume single message
+     * Consume in loop or consume single message.
      *
      * @return bool
      */

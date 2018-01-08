@@ -31,11 +31,7 @@ class File implements DriverInterface
     }
 
     /**
-     * Push message to the queue.
-     *
-     * @param string $queueName
-     * @param string $message
-     * @return bool
+     * @inheritdoc
      */
     public function pushMessage($queueName, $message)
     {
@@ -49,10 +45,7 @@ class File implements DriverInterface
     }
 
     /**
-     * Consume queue.
-     *
-     * @param string $queueName
-     * @param object $worker Worker object (must implement work() method)
+     * @inheritdoc
      */
     public function consume($queueName, $worker)
     {

@@ -2,7 +2,9 @@
 
 namespace Tests\Helpers;
 
-class DriverMock implements \Mqueue\Driver\DriverInterface
+use Mqueue\Driver\DriverInterface;
+
+class DriverMock implements DriverInterface
 {
     public $queue;
 

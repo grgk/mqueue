@@ -25,10 +25,7 @@ class RabbitMq implements DriverInterface
     }
 
     /**
-     * Push message to the queue.
-     *
-     * @param string $queueName
-     * @param string $message
+     * @inheritdoc
      */
     public function pushMessage($queueName, $message)
     {
@@ -40,10 +37,7 @@ class RabbitMq implements DriverInterface
     }
 
     /**
-     * Consume queue.
-     *
-     * @param string $queueName
-     * @param object $worker Worker object (must implement work() method)
+     * @inheritdoc
      */
     public function consume($queueName, $worker)
     {

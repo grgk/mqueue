@@ -16,7 +16,7 @@ class Producer
     /**
      * Queue driver.
      *
-     * @var Driver
+     * @var DriverInterface
      */
     public $driver;
 
@@ -35,6 +35,7 @@ class Producer
      *
      * @param string $queueName
      * @param string $message
+     * @return bool
      */
     public function produce($message, $queueName = 'default')
     {

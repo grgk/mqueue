@@ -2,6 +2,7 @@
     "name": "grgk/mqueue",
     "description": "Message queue",
     "type": "library",
+    "license": "MIT",
     "require": {
         "php-amqplib/php-amqplib": "^2.6",
         "symfony/filesystem": "^3.2",
